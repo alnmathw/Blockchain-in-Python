@@ -1,7 +1,13 @@
-from block import Block 
-block = Block("Hello World")
-block.mine(20)
+from chain import Chain
 
-print(block.hash.hexdigest())
-print(block.nonce)
-print(block.data)
+chain = Chain(20)
+
+i = 0
+
+while(True):
+    data = input("Add something to the chain: ")
+    chain.add_to_pool(data)
+    chain.mine()
+    if i % 5 == 0:
+        print(chain.blocks[i])
+    i += 1
